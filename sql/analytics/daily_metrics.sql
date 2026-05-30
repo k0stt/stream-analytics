@@ -1,4 +1,4 @@
-CREATE MATERIALIZED VIEW daily_metrics AS
+--CREATE MATERIALIZED VIEW daily_metrics AS
 SELECT
     DATE(listened_at) AS event_date,
     COUNT(DISTINCT user_id) AS dau,
