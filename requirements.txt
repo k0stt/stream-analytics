@@ -1,0 +1,12 @@
+pandas
+numpy
+faker
+sqlalchemy
+psycopg2-binary
+jupyter
+matplotlib
+scipy
+statsmodels
+fastapi
+uvicorn
+python-dotenv
