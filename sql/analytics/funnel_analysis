@@ -1,0 +1,23 @@
+WITH registered_users AS (
+    SELECT
+        COUNT(*) AS total_users
+    FROM users
+),
+listeners AS (
+    SELECT
+        COUNT(DISTINCT user_id) AS listening_users
+    FROM listening_events
+),
+premium_users AS (
+    SELECT
+        COUNT(*) AS premium_count
+    FROM users
+    WHERE subscription_type = 'premium'
+)
+SELECT
+    ru.total_users,
+    lu.listening_users,
+    pu.premium_count
+FROM registered_users ru
+CROSS JOIN listeners lu
+CROSS JOIN premium_users pu;
