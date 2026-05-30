@@ -1,29 +1,31 @@
 WITH first_activity AS (
     SELECT
         user_id,
-        MIN(DATE(listened_at)) AS first_date
+        MIN(DATE(listened_at)) AS cohort_date
     FROM listening_events
     GROUP BY user_id
 ),
-user_activity AS (
+
+retention_data AS (
     SELECT
-        le.user_id,
+        fa.cohort_date,
         DATE(le.listened_at) AS activity_date,
-        fa.first_date,
-        DATE(le.listened_at) - fa.first_date
-            AS days_since_signup
+        DATE(le.listened_at) - fa.cohort_date
+            AS retention_day,
+        le.user_id
     FROM listening_events le
     JOIN first_activity fa
-    ON le.user_id = fa.user_id
+        ON le.user_id = fa.user_id
 )
+
 SELECT
-    first_date,
-    days_since_signup,
+    cohort_date,
+    retention_day,
     COUNT(DISTINCT user_id) AS retained_users
-FROM user_activity
+FROM retention_data
 GROUP BY
-    first_date,
-    days_since_signup
+    cohort_date,
+    retention_day
 ORDER BY
-    first_date,
-    days_since_signup;
+    cohort_date,
+    retention_day
