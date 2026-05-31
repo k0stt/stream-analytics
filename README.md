@@ -1,4 +1,4 @@
-# Streamlytics 
+# Stream-analytics 
 Аналитическая платформа для музыкального стримингового сервиса (Spotify-like) с использованием Python, PostgreSQL, SQL и Power BI. 
 
 Проект моделирует полноценный workflow продуктовой аналитики: - генерация событий пользователей, 
@@ -145,7 +145,7 @@ python etl/generate_data.py
 
 ## Executive Dashboard
 
-![Executive Dashboard](docs/screenshots/executive_dashboard.png)
+![Executive Dashboard](docs/screenshots/executivedashboard.png)
 
 ## Retention Dashboard
 
@@ -154,7 +154,7 @@ python etl/generate_data.py
 
 ## A/B Test + Premium Dashboard
 
-![A/B + Premium Dashboard](docs/screenshots/premium_and_ab.png)
+![A/B + Premium Dashboard](docs/screenshots/premiumab.png)
 
 ---
 
